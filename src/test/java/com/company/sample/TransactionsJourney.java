@@ -88,6 +88,16 @@ public class TransactionsJourney {
 
   }
 
+  @Test
+  void testException() throws Exception {
+    mockMvc.perform(post("/api/transaction")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(mapper.writeValueAsString(new Transaction())))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.message", is("All the fields are mandatory.")));
+  }
+
   private void stubTransactionPerValue(String responseOneStr, String value) {
     stubFor(WireMock.post(urlEqualTo("/executor/transaction"))
         .withRequestBody(WireMock.containing(value))
