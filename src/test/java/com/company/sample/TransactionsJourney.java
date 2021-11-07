@@ -15,20 +15,18 @@ import com.company.sample.support.model.Transaction;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.util.UUID;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
-@AutoConfigureWireMock(port = 9090)
 @AutoConfigureMockMvc
+@AutoConfigureWireMock(port = 9090)
 public class TransactionsJourney {
 
   @Autowired
